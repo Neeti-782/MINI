@@ -50,6 +50,7 @@ const initialState = {
   completed: false,
   status: "idle",
   error: null,
+  closeSubmit: false,
 };
 
 const quizSlice = createSlice({
@@ -68,6 +69,7 @@ const quizSlice = createSlice({
       state.completed = false;
       state.status = "idle";
       state.error = null;
+      state.closeSubmit = false;
     },
   },
 
@@ -82,7 +84,9 @@ const quizSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchQuestionsAsync.fulfilled, (state, action) => {
-        ((state.status = "idle"), (state.questions = action.payload));
+        ((state.status = "idle"),
+          (state.questions = action.payload),
+          (state.closeSubmit = true));
       })
       .addCase(fetchQuestionsAsync.rejected, (state, action) => {
         ((state.status = "failed"), (state.error = action.payload));
