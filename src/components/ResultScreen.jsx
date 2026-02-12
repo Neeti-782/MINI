@@ -20,12 +20,14 @@ const ResultScreen = () => {
 
           <div className="flex items-center justify-between">
             <button
+              type="button"
               onClick={() => dispatch(resetQuiz())}
               className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600"
             >
               Restart
             </button>
             <button
+              type="button"
               onClick={() => dispatch(submitFinalQuiz())}
               className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600"
             >
