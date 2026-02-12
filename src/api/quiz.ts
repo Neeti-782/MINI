@@ -2,13 +2,16 @@ export const submitQuestionApi = async (data: {
   score: number;
   answers: Record<string, any>;
 }) => {
-  const res = await fetch("http://localhost:3000/quiz/submit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+  const res = await fetch(
+    "https://mini-server-production-378b.up.railway.app/quiz/submit",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     },
-    body: JSON.stringify(data),
-  });
+  );
 
   if (!res.ok) {
     const errorData = await res.json();
