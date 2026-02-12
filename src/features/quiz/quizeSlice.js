@@ -84,9 +84,7 @@ const quizSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchQuestionsAsync.fulfilled, (state, action) => {
-        ((state.status = "idle"),
-          (state.questions = action.payload),
-          (state.closeSubmit = true));
+        ((state.status = "idle"), (state.questions = action.payload));
       })
       .addCase(fetchQuestionsAsync.rejected, (state, action) => {
         ((state.status = "failed"), (state.error = action.payload));
@@ -117,6 +115,20 @@ const quizSlice = createSlice({
       .addCase(submitAnswerAsync.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload || "Something went wrong";
+      })
+
+      .addCase(submitFinalQuiz.pending, (state) => {
+        state.status = "loading";
+      })
+
+      .addCase(submitFinalQuiz.fulfilled, (state) => {
+        state.status = "idle";
+        state.closeSubmit = true;
+      })
+
+      .addCase(submitFinalQuiz.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload || "Submission failed";
       });
   },
 });
