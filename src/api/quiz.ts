@@ -19,7 +19,9 @@ export const submitQuestionApi = async (data: {
 };
 
 export const getQuestions = async () => {
-  const res = await fetch("http://localhost:3000/question");
+  const res = await fetch(
+    "https://mini-server-production-378b.up.railway.app/question",
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch questions");
