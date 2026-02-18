@@ -28,8 +28,8 @@ const QuestionCard = () => {
 
   return (
     <div className="bg-white p-8 rounded-2xl shadow-xl w-96 text-center relative">
-      <h1 className="text-2xl font-bold text-pink-600 mb-4">
-        Hii My Cutu this is for u....
+      <h1 className="text-2xl font-bold text-blue-600 mb-4">
+        Hii, Answer some Questins
       </h1>
       <ProgressBar />
 

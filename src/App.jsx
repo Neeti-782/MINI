@@ -14,7 +14,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="min-h-screen bg-pink-100 flex items-center justify-center">
+    <div className="min-h-screen bg-blue-100 flex items-center justify-center">
       {completed ? <ResultScreen /> : <QuestionCard />}
     </div>
   );

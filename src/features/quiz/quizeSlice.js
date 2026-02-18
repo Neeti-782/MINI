@@ -90,7 +90,6 @@ const quizSlice = createSlice({
         ((state.status = "failed"), (state.error = action.payload));
       })
 
-      // ✅ When async succeeds
       .addCase(submitAnswerAsync.fulfilled, (state, action) => {
         state.status = "idle";
 

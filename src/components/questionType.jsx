@@ -79,8 +79,6 @@ export const YesNoComponent = () => {
   const question = useSelector(selectCurrentQuestion);
   const { status } = useSelector(selectQuiz);
 
-  const [noPosition, setNoPosition] = useState({ x: 120, y: 0 });
-
   if (!question) return null;
 
   const handleYes = () => {
@@ -92,10 +90,13 @@ export const YesNoComponent = () => {
     );
   };
 
-  const moveNoButton = () => {
-    const randomX = Math.random() * 120 - 60;
-    const randomY = Math.random() * 120 - 60;
-    setNoPosition({ x: randomX, y: randomY });
+  const handleNo = () => {
+    dispatch(
+      submitAnswerAsync({
+        questionId: question.id,
+        value: "No",
+      }),
+    );
   };
 
   return (
@@ -109,13 +110,10 @@ export const YesNoComponent = () => {
       </button>
 
       <button
-        onMouseEnter={moveNoButton}
-        style={{
-          transform: `translate(${noPosition.x}px, ${noPosition.y}px)`,
-        }}
-        className="bg-red-500 text-white px-5 py-2 rounded-lg transition absolute"
+        onMouseEnter={handleNo}
+        className="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 transition absolute"
       >
-        No
+        {status === "loading" ? "Thinking..." : "YES"}
       </button>
     </div>
   );
