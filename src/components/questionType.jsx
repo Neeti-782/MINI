@@ -100,7 +100,7 @@ export const YesNoComponent = () => {
   };
 
   return (
-    <div className="flex justify-center gap-4 relative">
+    <div className="flex justify-between gap-4 items-center">
       <button
         onClick={handleYes}
         disabled={status === "loading"}
@@ -113,7 +113,7 @@ export const YesNoComponent = () => {
         onMouseEnter={handleNo}
         className="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 transition absolute"
       >
-        {status === "loading" ? "Thinking..." : "YES"}
+        {status === "loading" ? "Thinking..." : "No"}
       </button>
     </div>
   );
